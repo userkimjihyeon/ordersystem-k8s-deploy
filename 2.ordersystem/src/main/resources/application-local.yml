@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  config:
+    activate:
+      on-profile: local     #안써도 파일명의 -local로 읽을 수 있음
+  redis:
+    host: localhost   #기본엔드포인트
+    port: 6379
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/ordersystem   #rds엔드포인트
+    username: root
+    password: 1234
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+  output:
+    ansi:
+      enabled: ALWAYS
+
+cloud:
+  aws:
+    credentials:
+      access-key: xx
+      secret-key: yy
+    region:
+      static: ap-northeast-2
+    s3:
+      bucket: jihyeon-bucket1234
+
+jwt:
+  expirationAt: 1000
+  secretKeyAt: YmV5b25kYWNlc3N0b2tlbnNlY3JldGtleWJleW9uZGFjZXNzdG9rZW5zZWNyZXRrZXliZXlvbmRhY2Vzc3Rva2Vuc2VjcmV0a2V5
+  expirationRt: 10000
+  secretKeyRt: YmV5b25kYWNlc3N0b2tlbnNlY3JldGtleWJleW9uZGFjZXNzdG9rZW5zZWNyZXRrZXliZXlvbmRhY2Vzc3Rva2Vuc2VjcmV0a2V5
+

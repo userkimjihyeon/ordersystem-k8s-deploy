@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  redis:
+    host: redis-service
+    port: 6379
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    # 🚨아래 ${}부분은 pod를 실행하는 시점에 k8s의 secret자원을 활용
+    url: jdbc:mariadb://${DB_HOST}:3306/ordersystem
+    username: admin
+    password: ${DB_PW}
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+
+cloud:
+  aws:
+    credentials:
+      access-key: xx
+      secret-key: yy
+    region:
+      static: ap-northeast-2
+    s3:
+      bucket: jihyeon-bucket1234
+
+jwt:
+  expirationAt: 1000
+  secretKeyAt: YmV5b25kYWNlc3N0b2tlbnNlY3JldGtleWJleW9uZGFjZXNzdG9rZW5zZWNyZXRrZXliZXlvbmRhY2Vzc3Rva2Vuc2VjcmV0a2V5
+  expirationRt: 10000
+  secretKeyRt: YmV5b25kYWNlc3N0b2tlbnNlY3JldGtleWJleW9uZGFjZXNzdG9rZW5zZWNyZXRrZXliZXlvbmRhY2Vzc3Rva2Vuc2VjcmV0a2V5
