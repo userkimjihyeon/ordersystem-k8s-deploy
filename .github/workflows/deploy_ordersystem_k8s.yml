@@ -78,8 +78,8 @@ jobs:
 
       - name: eks kubectl apply
         run: |
-          kubectl rollout restart deployment apigateway-depl -n youngkwan
-          kubectl rollout restart deployment member-depl -n youngkwan
-          kubectl rollout restart deployment ordering-depl -n youngkwan
-          kubectl rollout restart deployment product-depl -n youngkwan
+          kubectl rollout restart deployment apigateway-depl -n jihyeon
+          kubectl rollout restart deployment member-depl -n jihyeon
+          kubectl rollout restart deployment ordering-depl -n jihyeon
+          kubectl rollout restart deployment product-depl -n jihyeon
         # kubectl apply -f ./2.ordersystem/k8s/k8s-ordersystem/depl_svc.yml
